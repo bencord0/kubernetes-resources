@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blog
+  labels:
+    name: blog
+
+spec:
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: blog
+          image: bencord0/blog
+          env:
+            - name: "DATABASE_URL"
+              value: "postgres://postgres@postgres/postgres"
+            - name: "ALLOWED_HOSTS"
+              value: "*"
+          ports:
+          - containerPort: 8000
