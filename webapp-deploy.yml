@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  template:
+    metadata:
+      labels:
+        name: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: docker.io/bencord0/blog:twisted
+          ports:
+          - containerPort: 8000
