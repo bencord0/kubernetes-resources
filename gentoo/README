@@ -1,0 +1,11 @@
+Run a gentoo container with a shared portage tree
+
+This assumes that you already have a NFS server which has exported /usr/portage.
+Adjust the address of the NFS server to suit your needs in `nfs-pv.yml`.
+
+Create all of the resources
+  $ kubectl apply -f .
+
+Attach to the gentoo container, and start emerging stuff.
+  $ kubectl exec -it $pod -- bash
+  # emerge eix

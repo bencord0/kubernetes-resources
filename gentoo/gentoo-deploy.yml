@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: gentoo
+  name: gentoo
+  namespace: default
+spec:
+  template:
+    metadata:
+      labels:
+        run: gentoo
+    spec:
+      # You can attach to this pod with
+      #     kubectl attach -it $pod -- bash
+      containers:
+      - name: gentoo
+        args: ["cat"]
+        image: gentoo/stage3-amd64
+        volumeMounts:
+        - mountPath: /usr/portage
+          name: portage
+      restartPolicy: Always
+      volumes:
+      - name: portage
+        persistentVolumeClaim:
+          claimName: nfs

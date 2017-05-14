@@ -5,7 +5,7 @@ Create all of the resources
     $ kubectl apply -f .
 
 Wait for GKE to assignn an external service IP
-    $ ./watch.sh
+    $ ../watch.sh
 
 Restore database from a backup (but I'm not tellin' where to get one)
     $ kubectl exec -i postgres -- psql -U postgres < backup.sql
