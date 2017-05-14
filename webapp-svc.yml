@@ -15,6 +15,11 @@ spec:
 
   # Add static routes on your external loadbalancers for this to work
   #   ip route add 10.1.0.0/16 via $NodeIP metric $x
-  # kube-proxy will setup some DNAT rules for external traffic to reach the service
+  # kube-proxy will setup some DNAT rules for external traffic to reach the service.
+  # This means you can't use multipath routing (nexthop via $gw weight $w).
+  # In a larger deployment, it may be preferable to dedicate specific kube-proxy
+  # nodes (e.g. worker nodes without kubelets)  to serve as a routing layer
+  # between external and cluster IPs.
+  # Alternativly, setup kube-proxy on the loadbalancers themselves.
   externalIPs:
     - 10.1.0.100
