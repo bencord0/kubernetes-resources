@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blog-env
+data:
+  DATABASE_URL: "postgres://postgres@10.0.240.234/postgres"
+  ALLOWED_HOSTS: "*"

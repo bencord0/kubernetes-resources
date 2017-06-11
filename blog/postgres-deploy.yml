@@ -16,14 +16,17 @@ spec:
         - name: postgres
           image: postgres
           env:
-            - name: PG_DATA
+            - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           ports:
             - containerPort: 5432
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: pg-data
+              name: pgdata
+      nodeSelector:
+          glusterfs: "true"
       volumes:
-        - name: pg-data
-          persistentVolumeClaim:
-            claimName: pg-data
+        - name: pgdata
+          glusterfs:
+            endpoints: gluster-cluster
+            path: pgdata
