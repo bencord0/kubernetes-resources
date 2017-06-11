@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: colours
+  labels:
+    name: colours
+spec:
+  template:
+    metadata:
+      labels:
+        app: colours
+    spec:
+      containers:
+      - name: colours
+        image: colours:30-flask
+        env:
+          - name: COLOUR
+            value: "#268cf2"

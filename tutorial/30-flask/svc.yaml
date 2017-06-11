@@ -1,0 +1,13 @@
+apuVersion: 1
+kind: Service
+metadata:
+  name: colours
+  labels:
+    name: colours
+spec:
+  selector:
+    app: colours
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
