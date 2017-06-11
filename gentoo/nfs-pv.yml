@@ -9,5 +9,6 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
+    # Not available outside my network, use your own
     server: portage.condi.me
     path: "/usr/portage"
