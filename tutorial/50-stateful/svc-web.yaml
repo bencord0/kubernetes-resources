@@ -1,0 +1,13 @@
+apuVersion: 1
+kind: Service
+metadata:
+  name: stateful-web
+  labels:
+    name: stateful-web
+spec:
+  selector:
+    app: stateful-web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

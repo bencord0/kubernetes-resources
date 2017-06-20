@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: picker
+  labels:
+    name: picker
+spec:
+  template:
+    metadata:
+      labels:
+        app: picker
+    spec:
+      containers:
+      - name: picker
+        image: picker:40-picker
+        env:
+          - name: DATABASE_URL
+            value: "postgres://postgres@localhost/postgres"
+      - name: db
+        image: postgres

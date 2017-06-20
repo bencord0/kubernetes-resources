@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: hello
-      image: colours:10-hello
+      image: hello:10-hello

@@ -1,0 +1,14 @@
+apuVersion: 1
+kind: Service
+metadata:
+  name: stateful-db
+  labels:
+    name: stateful-db
+spec:
+  clusterIP: 10.0.0.2
+  selector:
+    app: stateful-db
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

@@ -5,7 +5,7 @@ apply: build
   do sleep 2; done
 
 build:
-	docker build -t colours:10-hello .
+	docker build -t hello:10-hello .
 
 destroy:
 	kubectl delete -f pod.yaml

@@ -1,0 +1,13 @@
+apuVersion: 1
+kind: Service
+metadata:
+  name: picker
+  labels:
+    name: picker
+spec:
+  selector:
+    app: picker
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

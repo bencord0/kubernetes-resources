@@ -1,13 +1,20 @@
-apply: apply-blue
+apply: blue
 	while ! \
 		kubectl get svc/colours -o custom-columns=NAME:.metadata.name,clusterIP:.spec.clusterIP; \
 	do sleep 2; done
 
-apply-blue: service
+blue: service
 	kubectl apply -f deploy-blue.yaml
 
-apply-green: service
+green: service
 	kubectl apply -f deploy-green.yaml
+
+REPLICAS := 5
+scale:
+	kubectl scale deploy/colours --replicas=$(REPLICAS)
+	while ! \
+		kubectl get svc/colours -o custom-columns=NAME:.metadata.name,clusterIP:.spec.clusterIP; \
+	do sleep 2; done
 
 service:
 	kubectl apply -f svc.yaml
@@ -19,4 +26,4 @@ destroy:
 	kubectl delete -f svc.yaml
 	kubectl delete -f deploy-blue.yaml
 
-.PHONY: build service apply apply-blue apply-green destroy
+.PHONY: build service apply blue green destroy
