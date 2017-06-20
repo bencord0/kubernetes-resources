@@ -16,6 +16,7 @@ spec:
       containers:
       - name: gentoo
         args: ["cat"]
+        stdin: true
         image: gentoo/stage3-amd64
         volumeMounts:
         - mountPath: /usr/portage
