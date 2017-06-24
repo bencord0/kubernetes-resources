@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: blog-env
 data:
-  DATABASE_URL: "postgres://postgres@10.0.240.234/postgres"
+  DATABASE_URL: "postgres://postgres@10.0.228.16/postgres"
   ALLOWED_HOSTS: "*"

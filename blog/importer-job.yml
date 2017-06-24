@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: blogposts
+spec:
+  template:
+    metadata:
+      name: blogposts
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: blogposts
+        image: bencord0/blog
+        envFrom:
+        - configMapRef:
+            name: blog-env
+        command:
+          - "bash"
+          - "-c"
+          - "git clone https://github.com/bencord0/blogposts; blog manage migrate && blog manage import_entries /blogposts"
