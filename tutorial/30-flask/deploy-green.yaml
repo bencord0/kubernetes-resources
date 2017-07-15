@@ -9,6 +9,7 @@ spec:
     metadata:
       labels:
         app: colours
+        active: yup
     spec:
       containers:
       - name: colours
