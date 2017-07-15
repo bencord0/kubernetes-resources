@@ -23,10 +23,6 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: pgdata
-      nodeSelector:
-          glusterfs: "true"
       volumes:
         - name: pgdata
-          glusterfs:
-            endpoints: gluster-cluster
-            path: pgdata
+          emptyDir: {}
