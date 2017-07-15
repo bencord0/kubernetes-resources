@@ -13,3 +13,9 @@ spec:
       containers:
       - name: db
         image: postgres
+        volumeMounts:
+        - name: postgres
+          mountPath: /var/lib/postgres
+      volumes:
+      - name: postgres
+        emptyDir: {}
