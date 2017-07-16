@@ -1,0 +1,31 @@
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: default
+  name: default-readall
+
+rules:
+- apiGroups: [""]  # Core API group
+  verbs: ["get", "watch", "list"]
+  resources:
+  - pods
+  - replicationcontrollers
+  - services
+- apiGroups: ["apps"]
+  verbs: ["get", "watch", "list"]
+  resources:
+  - statefulsets
+- apiGroups: ["autoscaling"]
+  verbs: ["get", "watch", "list"]
+  resources:
+  - horizontalpodautoscalers
+- apiGroups: ["batch"]
+  verbs: ["get", "watch", "list"]
+  resources:
+  - jobs
+- apiGroups: ["extensions"]
+  verbs: ["get", "watch", "list"]
+  resources:
+  - deployments
+  - replicasets
