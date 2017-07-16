@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet 
+metadata:
+  name: postgres
+
+spec:
+  serviceName: postgres
+
+  template:
+    metadata:
+      labels:
+        name: postgres
+
+    spec:
+      containers:
+      - name: postgres
+        image: postgres
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data/
+          name: pgdata
+
+      volumes:
+      - name: pgdata
+        glusterfs:
+          endpoints: gluster-cluster
+          path: pgdata

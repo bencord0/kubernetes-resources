@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-rescue
+
+spec:
+  containers:
+  - name: postgres-rescue
+    image: postgres
+
+    # Hold the container open, without running more exotic processes
+    # You can exec into the container and debug state from within
+    command: ["cat"]
+    stdin: true
+
+    env:
+    - name: PGDATA
+      value: /var/lib/postgresql/data
+    ports:
+    - containerPort: 5432
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: pgdata
+
+  volumes:
+  - name: pgdata
+    glusterfs:
+      endpoints: gluster-cluster
+      path: pgdata
