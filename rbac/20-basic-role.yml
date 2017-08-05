@@ -18,10 +18,15 @@ rules:
   - update
   - watch
   resources:
+  - configmaps
+  - endpoints
   - pods
+  - pods/exec
+  - pods/log
   - pods/portforward
+  - services
 
-- apiGroups: ["extensions"]
+- apiGroups: ["batch", "extensions"]
   verbs:
   - create
   - delete
@@ -29,6 +34,9 @@ rules:
   - list
   - patch
   - post
+  - update
   - watch
   resources:
   - deployments
+  - jobs
+  - replicasets
