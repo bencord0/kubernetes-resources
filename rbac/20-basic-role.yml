@@ -14,17 +14,23 @@ rules:
   - get
   - list
   - patch
-  - proxy
   - update
   - watch
   resources:
   - configmaps
   - endpoints
   - pods
+  - pods/attach
   - pods/exec
   - pods/log
   - pods/portforward
+  - pods/proxy
+  - pods/status
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - replicationcontrollers/status
   - services
+  - services/proxy
 
 - apiGroups: ["batch", "extensions"]
   verbs:
