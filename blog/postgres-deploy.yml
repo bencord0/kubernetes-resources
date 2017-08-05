@@ -4,12 +4,14 @@ metadata:
   name: postgres
   labels:
     name: postgres
+    app: blog
 
 spec:
   template:
     metadata:
       labels:
         name: postgres
+        app: blog
 
     spec:
       containers:

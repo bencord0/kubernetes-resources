@@ -4,6 +4,7 @@ metadata:
   name: postgres
   labels:
     name: postgres
+    app: blog
 
 spec:
   clusterIP: 10.0.228.16
@@ -11,3 +12,4 @@ spec:
     - port: 5432
   selector:
     name: postgres
+    app: blog
