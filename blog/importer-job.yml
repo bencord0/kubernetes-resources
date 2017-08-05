@@ -7,7 +7,7 @@ spec:
     metadata:
       name: blogposts
     spec:
-      restartPolicy: Never
+      restartPolicy: OnFailure
       containers:
       - name: blogposts
         image: bencord0/blog
@@ -16,5 +16,6 @@ spec:
             name: blog-env
         command:
           - "bash"
+          - "-e"
           - "-c"
           - "git clone https://github.com/bencord0/blogposts; blog manage migrate && blog manage import_entries /blogposts"
