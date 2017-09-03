@@ -4,11 +4,13 @@ metadata:
   name: blog
   labels:
     name: blog
+    app: blog
 
 spec:
   template:
     metadata:
       labels:
+        name: blog
         app: blog
     spec:
       containers:
