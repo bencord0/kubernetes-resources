@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rproxy
+  labels:
+    name: rproxy
+    app: blog
+
+spec:
+  template:
+    metadata:
+      labels:
+        name: rproxy
+        app: blog
+    spec:
+      hostNetwork: true
+      containers:
+      - name: rproxy
+        image: glyph/rproxy
+        command:
+        - /appenv/bin/twist
+        args:
+        - rproxy
+        - --config=/conf/rproxy.ini
+        ports:
+        - name: web
+          containerPort: 80
+        - name: secureweb
+          containerPort: 443
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+      volumes:
+      - name: conf
+        hostPath:
+          path: /srv/conf

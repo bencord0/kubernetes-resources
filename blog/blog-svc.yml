@@ -10,9 +10,8 @@ spec:
   selector:
     name: blog
     app: blog
+  clusterIP: 10.0.196.94
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8000
-      nodePort: 31234
-  type: NodePort
