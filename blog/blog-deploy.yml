@@ -21,6 +21,9 @@ spec:
         envFrom:
         - configMapRef:
             name: blog-env
+        - secretRef:
+            name: blog-sec
+            optional: true
         livenessProbe:
           httpGet:
             path: /
