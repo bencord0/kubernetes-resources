@@ -5,3 +5,4 @@ metadata:
 data:
   DATABASE_URL: "postgres://postgres@postgres.default.svc.cluster.local/postgres"
   ALLOWED_HOSTS: "*"
+  WELLKNOWN_KEYBASE: "/conf/keybase.txt"
