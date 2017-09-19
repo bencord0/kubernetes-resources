@@ -10,6 +10,9 @@ Wait for GKE to assignn an external service IP
 Restore database from a backup (but I'm not tellin' where to get one)
     $ kubectl exec -i postgres -- psql -U postgres < backup.sql
 
+Add secrets from an env file
+    $ echo SENTRY_DSN=... > environment.txt
+    $ kubectl create secret generic blog-sec --from-env-file=./environment.txt
 
 TODO:
   https; Let's Encrypt probably, see https://glyph.twistedmatrix.com/2016/10/docker-run-glyph-rproxy.html
@@ -17,3 +20,5 @@ TODO:
   db replication: Haven't needed it so far. Authorititave data can be found on https://github.com/bencord0/blogposts/
   .well-known: This probably can be done with a few more persistent volume mounts
   dns: The service IP might be stable enough to point DNS at it
+
+
