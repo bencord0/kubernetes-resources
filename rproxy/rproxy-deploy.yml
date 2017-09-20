@@ -12,21 +12,22 @@ spec:
       labels:
         name: rproxy
         app: blog
+
     spec:
       hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: rproxy
-        image: glyph/rproxy
-        command:
-        - /appenv/bin/twist
-        args:
-        - rproxy
-        - --config=/conf/rproxy.ini
+        image: bencord0/rproxy
         ports:
         - name: web
           containerPort: 80
+          hostPort: 80
+          protocol: TCP
         - name: secureweb
           containerPort: 443
+          hostPort: 443
+          protocol: TCP
         volumeMounts:
         - name: conf
           mountPath: /conf
