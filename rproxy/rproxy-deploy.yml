@@ -14,7 +14,6 @@ spec:
         app: blog
 
     spec:
-      hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: rproxy
