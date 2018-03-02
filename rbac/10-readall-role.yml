@@ -1,6 +1,6 @@
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: default
   name: default-readall
@@ -15,6 +15,9 @@ rules:
 - apiGroups: ["apps"]
   verbs: ["get", "watch", "list"]
   resources:
+  - daemonsets
+  - deployments
+  - replicasets
   - statefulsets
 - apiGroups: ["autoscaling"]
   verbs: ["get", "watch", "list"]
@@ -23,9 +26,11 @@ rules:
 - apiGroups: ["batch"]
   verbs: ["get", "watch", "list"]
   resources:
+  - cronjobs
   - jobs
 - apiGroups: ["extensions"]
   verbs: ["get", "watch", "list"]
   resources:
+  - daemonsets
   - deployments
   - replicasets
