@@ -26,3 +26,48 @@ subjects:
 - kind: User
   name: cluster.condi.me
   apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-dns
+roleRef:
+  kind: ClusterRole
+  name: system:kube-dns
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-scheduler
+roleRef:
+  kind: ClusterRole
+  name: system:kube-scheduler
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-controller-manager
+roleRef:
+  kind: ClusterRole
+  name: system:kube-controller-manager
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
