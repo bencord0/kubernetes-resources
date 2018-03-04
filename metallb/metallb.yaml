@@ -1,21 +1,24 @@
 ---
 ## Controller deployment
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: metallb-system
   name: controller
   labels:
-    app: controller
+    app: metallb
+    component: controller
 spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: controller
+      app: metallb
+      component: controller
   template:
     metadata:
       labels:
-        app: controller
+        app: metallb
+        component: controller
     spec:
       serviceAccountName: controller
       terminationGracePeriodSeconds: 0
@@ -24,11 +27,12 @@ spec:
         runAsUser: 65534 # nobody
       containers:
       - name: controller
-        image: metallb/controller:v0.3.1
+        image: metallb/controller:v0.4.2
+        imagePullPolicy: Always
         resources:
           limits:
-            cpu: "0.1"
-            memory: "100Mi"
+            cpu: 100m
+            memory: 100Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -38,28 +42,31 @@ spec:
 ---
 
 # Speaker DaemonSet
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   namespace: metallb-system
   name: speaker
   labels:
-    app: speaker
+    app: metallb
+    component: speaker
 spec:
   selector:
     matchLabels:
-      app: speaker
+      app: metallb
+      component: speaker
   template:
     metadata:
       labels:
-        app: speaker
+        app: metallb
+        component: speaker
     spec:
       serviceAccountName: speaker
       terminationGracePeriodSeconds: 0
       hostNetwork: true
       containers:
       - name: speaker
-        image: metallb/speaker:v0.3.1
+        image: metallb/speaker:v0.4.2
         args:
         - -port=7472
         env:
@@ -73,8 +80,8 @@ spec:
               fieldPath: spec.nodeName
         resources:
           limits:
-            cpu: "0.1"
-            memory: "100Mi"
+            cpu: 100m
+            memory: 100Mi
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
