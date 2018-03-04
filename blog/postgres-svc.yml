@@ -7,7 +7,6 @@ metadata:
     app: blog
 
 spec:
-  clusterIP: 10.0.228.16
   ports:
     - port: 5432
   selector:
