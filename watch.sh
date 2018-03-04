@@ -1,2 +1,2 @@
 #!/bin/bash
-exec watch kubectl get nodes,ingress,svc,ep,rc,rs,deploy,pods,pv,pvc,ds,statefulset,cm,secret,job
+exec watch kubectl get --all-namespaces -o wide ingress,svc,ep,deploy,pods,pv,pvc,ds,statefulset,cm,job,nodes
