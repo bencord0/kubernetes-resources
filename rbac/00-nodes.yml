@@ -1,0 +1,466 @@
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: attachdetach-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:attachdetach-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: certificate-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:certificate-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: clusterrole-aggregation-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:clusterrole-aggregation-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cronjob-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:cronjob-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: daemon-set-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:daemon-set-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: deployment-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:deployment-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: disruption-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:disruption-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: endpoint-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:endpoint-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: generic-garbage-collector
+roleRef:
+  kind: ClusterRole
+  name: system:controller:generic-garbage-collector
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: horizontal-pod-autoscaler
+roleRef:
+  kind: ClusterRole
+  name: system:controller:horizontal-pod-autoscaler
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: job-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:job-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: namespace-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:namespace-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: node-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:node-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: persistent-volume-binder
+roleRef:
+  kind: ClusterRole
+  name: system:controller:persistent-volume-binder
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-garbage-collector
+roleRef:
+  kind: ClusterRole
+  name: system:controller:pod-garbage-collector
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: replicaset-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:replicaset-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: replication-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:replication-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: resourcequota-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:resourcequota-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: route-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:route-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: service-account-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:service-account-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: service-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:service-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: statefulset-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:statefulset-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ttl-controller
+roleRef:
+  kind: ClusterRole
+  name: system:controller:ttl-controller
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: discovery
+roleRef:
+  kind: ClusterRole
+  name: system:discovery
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: discovery
+roleRef:
+  kind: ClusterRole
+  name: system:discovery
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-aggregator
+roleRef:
+  kind: ClusterRole
+  name: system:kube-aggregator
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-controller-manager
+roleRef:
+  kind: ClusterRole
+  name: system:kube-controller-manager
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-dns
+roleRef:
+  kind: ClusterRole
+  name: system:kube-dns
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-scheduler
+roleRef:
+  kind: ClusterRole
+  name: system:kube-scheduler
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: nodes
+roleRef:
+  kind: ClusterRole
+  name: system:node
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me 
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: node-proxier
+roleRef:
+  kind: ClusterRole
+  name: system:node-proxier
+  apiGroup: rbac.authorization.k8s.io
+
+subjects:
+- kind: User
+  name: cluster.condi.me
+  apiGroup: rbac.authorization.k8s.io
+
