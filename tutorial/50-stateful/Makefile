@@ -1,6 +1,6 @@
-apply: service deploy
+apply: build service deploy
 	while ! \
-		kubectl get svc/stateful-web -o custom-columns=NAME:.metadata.name,clusterIP:.spec.clusterIP; \
+		kubectl get svc/stateful-web -o custom-columns=NAME:.metadata.name,InternalIP:.spec.clusterIP,ExternalIP:.status.loadBalancer.ingress[].ip; \
 	do sleep 2; done
 
 deploy: service
@@ -15,7 +15,7 @@ REPLICAS := 3
 scale: deploy
 	kubectl scale deploy/stateful-web --replicas=$(REPLICAS)
 	while ! \
-		kubectl get svc/stateful-web -o custom-columns=NAME:.metadata.name,clusterIP:.spec.clusterIP; \
+		kubectl get svc/stateful-web -o custom-columns=NAME:.metadata.name,InternalIP:.spec.clusterIP,ExternalIP:.status.loadBalancer.ingress[].ip; \
 	do sleep 2; done
 
 service:
@@ -23,7 +23,8 @@ service:
 	kubectl apply -f svc-web.yaml
 
 build:
-	docker build -t stateful:50-stateful .
+	docker build -t registry.condi.me/stateful:50-stateful .
+	docker push registry.condi.me/stateful:50-stateful
 
 destroy:
 	-kubectl delete -f svc-web.yaml

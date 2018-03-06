@@ -1,6 +1,6 @@
-apply: service deploy
+apply: build service deploy
 	while ! \
-		kubectl get svc/picker -o custom-columns=NAME:.metadata.name,clusterIP:.spec.clusterIP; \
+		kubectl get svc/picker -o custom-columns=NAME:.metadata.name,InternalIP:.spec.clusterIP,ExternalIP:.status.loadBalancer.ingress[].ip; \
 	do sleep 2; done
 
 deploy: service
@@ -14,14 +14,15 @@ REPLICAS := 3
 scale: deploy
 	kubectl scale deploy/picker --replicas=$(REPLICAS)
 	while ! \
-		kubectl get svc/picker -o custom-columns=NAME:.metadata.name,clusterIP:.spec.clusterIP; \
+		kubectl get svc/picker -o custom-columns=NAME:.metadata.name,InternalIP:.spec.clusterIP,ExternalIP:.status.loadBalancer.ingress[].ip; \
 	do sleep 2; done
 
 service:
 	kubectl apply -f svc.yaml
 
 build:
-	docker build -t picker:40-picker .
+	docker build -t registry.condi.me/picker:40-picker .
+	docker push registry.condi.me/picker:40-picker
 
 destroy:
 	-kubectl delete -f svc.yaml

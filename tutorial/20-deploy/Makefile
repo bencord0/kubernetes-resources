@@ -14,7 +14,8 @@ scale:
 	do sleep 2; done
 
 build:
-	docker build -t hello:20-deploy .
+	docker build -t registry.condi.me/hello:20-deploy .
+	docker push registry.condi.me/hello:20-deploy
 
 destroy:
 	kubectl delete -f deploy.yaml

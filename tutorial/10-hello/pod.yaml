@@ -4,5 +4,5 @@ metadata:
   name: hello
 spec:
   containers:
-    - name: hello
-      image: hello:10-hello
+  - name: hello
+    image: registry.condi.me/hello:10-hello

@@ -1,14 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: stateful-db
   labels:
     name: stateful-db
+
 spec:
+  selector:
+    matchLabels:
+      app: stateful-db
+
   template:
     metadata:
       labels:
         app: stateful-db
+
     spec:
       containers:
       - name: db
@@ -16,6 +23,7 @@ spec:
         volumeMounts:
         - name: postgres
           mountPath: /var/lib/postgres
+
       volumes:
       - name: postgres
         emptyDir: {}

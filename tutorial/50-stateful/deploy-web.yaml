@@ -1,18 +1,25 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: stateful-web
   labels:
     name: stateful-web
+
 spec:
+  selector:
+    matchLabels:
+      app: stateful-web
+
   template:
     metadata:
       labels:
         app: stateful-web
+
     spec:
       containers:
       - name: stateful-web
-        image: stateful:50-stateful
+        image: registry.condi.me/stateful:50-stateful
         env:
           - name: DATABASE_URL
-            value: "postgres://postgres@10.0.0.2/postgres"
+            value: "postgres://postgres@stateful-db.default.svc.cluster.local/postgres"

@@ -1,19 +1,26 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: colours
   labels:
     name: colours
+
 spec:
+  selector:
+    matchLabels:
+      app: colours
+
   template:
     metadata:
       labels:
         app: colours
-        active: yup
+
     spec:
       containers:
       - name: colours
-        image: colours:30-flask
+        image: registry.condi.me/colours:30-flask
         env:
-          - name: COLOUR
-            value: "#268cf2"
+        - name: COLOUR
+          value: "#268cf2"
+        ports:
+        - containerPort: 80
