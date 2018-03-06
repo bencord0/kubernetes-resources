@@ -1,0 +1,50 @@
+# https://docs.docker.com/registry/recipes/nginx/#setting-things-up
+upstream registry_backend {
+	server 192.168.1.242;
+
+	check interval=5000 type=http;
+	keepalive 12;
+}
+
+map $upstream_http_docker_distribution_api_version $docker_distribution_api_version {
+	'' 'registry/2.0';	
+}
+
+server {
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+
+	client_max_body_size 1G;
+	chunked_transfer_encoding on;
+
+	ssl_certificate /etc/letsencrypt/live/registry.condi.me/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/registry.condi.me/privkey.pem;
+
+	add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+	add_header X-Clacks-Overhead "GNU Terry Pratchett";
+	add_header 'Docker-Distribution-Api-Version' $docker_distribution_api_version always;
+
+	server_name registry.condi.me;
+
+	location /v2/ {
+
+		# Filter out old docker versions
+		if ($http_user_agent ~ "^(docker\/1\.(3|4|5(?!\.[0-9]-dev))|Go ).*$" ) {
+			return 404;
+		}
+
+		# Use network wide credentials
+		auth_pam "registry.condi.me";
+		auth_pam_service_name "nginx";
+
+		proxy_pass		http://registry_backend;
+		proxy_redirect		off;
+		proxy_set_header	Host $http_host;
+		proxy_set_header	Connection $connection_upgrade;
+		proxy_set_header	Upgrade $http_upgrade;
+		proxy_set_header	X-Forwarded-Proto $scheme;
+		proxy_set_header	X-Real-IP $realip_remote_addr;
+		proxy_set_header	X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_read_timeout	900;
+	}
+}
