@@ -7,5 +7,5 @@ Create all of the resources
   $ kubectl apply -f .
 
 Attach to the gentoo container, and start emerging stuff.
-  $ kubectl exec -it $pod -- bash
+  $ kubectl exec -it -n gentoo gentoo -- bash
   # emerge eix

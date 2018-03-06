@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: gentoo
+  namespace: gentoo
+  labels:
+    run: gentoo
+
+spec:
+  # You can enter into this pod with
+  #     kubectl exec -it -n gentoo gentoo -- bash
+  containers:
+  - name: gentoo
+    args: ["cat"]
+    stdin: true
+    image: gentoo/stage3-amd64
+    imagePullPolicy: Always
+    volumeMounts:
+    - mountPath: /usr/portage
+      name: portage
+
+  volumes:
+  - name: portage
+    persistentVolumeClaim:
+      claimName: nfs
