@@ -6,3 +6,5 @@ provider "consul" {
 
   token = "${var.consul_token}"
 }
+
+provider "pass" {}

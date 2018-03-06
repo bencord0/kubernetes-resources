@@ -2,6 +2,10 @@ module "consul" {
   source = "./consul"
 }
 
+module "secrets" {
+  source = "./secrets"
+}
+
 module "web" {
   source = "./web"
 
