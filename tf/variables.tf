@@ -1,0 +1,1 @@
+variable "consul_token" {}

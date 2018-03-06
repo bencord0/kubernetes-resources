@@ -1,3 +1,7 @@
+module "consul" {
+  source = "./consul"
+}
+
 module "web" {
   source = "./web"
 
