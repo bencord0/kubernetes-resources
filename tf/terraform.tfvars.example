@@ -1,1 +1,2 @@
 consul_token = ""
+web_load_balancer_ips = ""

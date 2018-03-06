@@ -1,1 +1,1 @@
-variable "load_balancer_ip" {}
+variable "load_balancer_ips" {}

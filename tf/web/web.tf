@@ -1,37 +1,55 @@
+locals {
+  app       = "web"
+  namespace = "web"
+}
+
+resource "kubernetes_namespace" "web" {
+  metadata {
+    name = "${local.namespace}"
+  }
+}
+
 resource "kubernetes_replication_controller" "web" {
   metadata {
-    generate_name = "web"
+    generate_name = "${local.namespace}-"
+    namespace     = "${local.namespace}"
+
     labels {
-      app = "web"
+      app = "${local.app}"
     }
   }
 
   spec {
     selector {
-      app = "web"
+      app = "${local.app}"
     }
 
     template {
       container {
         image = "nginx"
-        name  = "web"
+        name  = "${local.app}"
 
         port {
           container_port = 80
         }
       }
     }
+
+    replicas = "${length(split(",", var.load_balancer_ips))}"
   }
 }
 
 resource "kubernetes_service" "web" {
+  count = "${length(split(",", var.load_balancer_ips))}"
+
   metadata {
-    generate_name = "web"
+    generate_name = "${local.namespace}-"
+    namespace     = "${local.namespace}"
   }
 
   spec {
     selector {
-      app = "web"
+      app = "${local.app}"
     }
 
     port {
@@ -42,6 +60,6 @@ resource "kubernetes_service" "web" {
     }
 
     type             = "LoadBalancer"
-    load_balancer_ip = "${var.load_balancer_ip}"
+    load_balancer_ip = "${element(split(",", var.load_balancer_ips), count.index)}"
   }
 }

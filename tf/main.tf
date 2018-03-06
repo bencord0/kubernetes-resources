@@ -9,7 +9,7 @@ module "secrets" {
 module "web" {
   source = "./web"
 
-  load_balancer_ip = "192.168.1.250"
+  load_balancer_ips = "${var.web_load_balancer_ips}"
 }
 
 output "web_ip" {
