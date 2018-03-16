@@ -1,13 +1,13 @@
 module "consul" {
-  source = "./consul"
+  source = "./modules/consul"
 }
 
 module "secrets" {
-  source = "./secrets"
+  source = "./modules/secrets"
 }
 
 module "web" {
-  source = "./web"
+  source = "./modules/web"
 
   load_balancer_ips = "${var.web_load_balancer_ips}"
 }
