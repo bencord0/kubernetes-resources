@@ -6,8 +6,7 @@ metadata:
 data:
   config: |
     address-pools:
-    - name: internal
-      protocol: arp
-      arp-network: 192.168.1.0/24
-      cidr:
+    - name: default
+      protocol: layer2
+      addresses:
       - 192.168.1.240/28
