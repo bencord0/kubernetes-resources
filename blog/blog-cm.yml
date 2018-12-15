@@ -4,6 +4,6 @@ metadata:
   namespace: blog
   name: blog-env
 data:
-  DATABASE_URL: "postgres://postgres@postgres.default.svc.cluster.local/postgres"
+  DATABASE_URL: "postgres://postgres@postgres.blog.svc.cluster.local/postgres"
   ALLOWED_HOSTS: "*"
   WELLKNOWN_KEYBASE: "/conf/keybase.txt"
