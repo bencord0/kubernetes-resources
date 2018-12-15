@@ -2,12 +2,11 @@ Spinning up my blog on kubernetes (GKE)
 
 
 Create all of the resources
+
     $ kubectl apply -f .
 
-Wait for GKE to assignn an external service IP
-    $ ../watch.sh
-
 Restore database from a backup (but I'm not tellin' where to get one)
+
     $ kubectl exec -i postgres -- psql -U postgres < backup.sql
 
 Add secrets from an env file
@@ -21,4 +20,13 @@ TODO:
   .well-known: This probably can be done with a few more persistent volume mounts
   dns: The service IP might be stable enough to point DNS at it
 
+## Pulling images from a private repository
 
+- https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account
+
+- https://github.com/bencord0/terraform-plans/tree/master/modules/secrets
+
+Create the secrets for pulling docker images from private registries.
+Then run the following command for the namespace to granat the service account permissions to pull images.
+
+  $ kubectl patch serviceaccount blog -p '{"imagePullSecrets": [{"name": "registry"}]}'
