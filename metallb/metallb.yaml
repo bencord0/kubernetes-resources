@@ -27,8 +27,14 @@ spec:
         runAsUser: 65534 # nobody
       containers:
       - name: controller
-        image: metallb/controller:v0.5.0
+        image: metallb/controller:v0.7.3
         imagePullPolicy: Always
+        args:
+        - --port=7472
+        - --config=config
+        ports:
+        - name: monitoring
+          containerPort: 7472
         resources:
           limits:
             cpu: 100m
@@ -66,18 +72,18 @@ spec:
       hostNetwork: true
       containers:
       - name: speaker
-        image: metallb/speaker:v0.5.0
+        image: metallb/speaker:v0.7.3
         args:
-        - -port=7472
+        - --port=7472
+        - --config=config
         env:
-        - name: METALLB_NODE_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
         - name: METALLB_NODE_NAME
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+        ports:
+        - name: monitoring
+          containerPort: 7472
         resources:
           limits:
             cpu: 100m
