@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: default-http-backend
+  name: nginx-ingress-controller
   namespace: ingress-nginx
   labels:
     app.kubernetes.io/name: ingress-nginx
@@ -27,7 +27,7 @@ spec:
         - --configmap=$(POD_NAMESPACE)/nginx-configuration
         - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
         - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
-        - --publish-service=$(POD_NAMESPACE/ingress-nginx
+        - --publish-service=$(POD_NAMESPACE)/ingress-nginx
         - --annotations-prefix=nginx.ingress.kubernetes.io
         securityContext:
           capabilities:
@@ -70,8 +70,8 @@ spec:
           containerPort: 443
         resources:
           limits:
-            cpu: 10m
-            memory: 20Mi
+            cpu: 100m
+            memory: 200Mi
           requests:
-            cpu: 10m
-            memory: 20Mi
+            cpu: 100m
+            memory: 200Mi
