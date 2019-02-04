@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: blog
+  name: blog
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  backend:
+    serviceName: blog
+    servicePort: 80
